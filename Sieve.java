@@ -213,7 +213,7 @@ return toReturn;
 	}
 	} else {
 	    // User forgot to enter an argument!
-	    new IllegalArgumentException();
+	    throw new IllegalArgumentException();
 	}
 	return toReturn;
     }
@@ -249,7 +249,7 @@ return toReturn;
 	} catch (Exception ex) {
 	    System.out.println("You forgot to enter a valid integer (> 0)!");
 	    // System.out.println("Assuming you meant to type 100...");
-      System.exit(-1);
+      return;
 	    // _max = 100;
 	}
 
