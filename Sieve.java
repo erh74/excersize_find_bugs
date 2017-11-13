@@ -169,7 +169,7 @@ public class Sieve {
     public static int[] generateSieve(int maxSize) {
       if (maxSize < 0){
         System.out.println("Invalid maxSize");
-        System.exit(-1);
+        throw new RuntimeException();
       }
 
         int size = maxSize;
@@ -198,11 +198,11 @@ return toReturn;
   //   System.exit(-1);
   // }
 	if (args.length > 0) {
-	    toReturn = (int) Integer.valueOf(args[0]);
+	    toReturn = (int) Integer.parseInt(args[0]);
       for(int i = 0; i < args[0].length(); i++){
         if (!(Character.isDigit(args[0].charAt(i)))){
           System.out.println("Bad input - only positive numbers please");
-          System.exit(-1);
+          throw new RuntimeException("hi");
         }
       }
 
@@ -242,6 +242,10 @@ return toReturn;
 
 	try {
 	    _max = calculateMax(args);
+      // Calculate sieve and print it out
+      int[] sieve = generateSieve(_max);
+      int[] results = calculateSieve(sieve);
+    	printSieve(results);
 	} catch (Exception ex) {
 	    System.out.println("You forgot to enter a valid integer (> 0)!");
 	    // System.out.println("Assuming you meant to type 100...");
@@ -249,10 +253,8 @@ return toReturn;
 	    // _max = 100;
 	}
 
-	// Calculate sieve and print it out
-	int[] sieve = generateSieve(_max);
-	int[] results = calculateSieve(sieve);
-	printSieve(results);
+
+
     }
 
 }
